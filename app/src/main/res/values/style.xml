@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BarPercentView">
+        <!--进度条高度-->
+        <attr name="barHeight" format="dimension" />
+        <!--圆角矩形半径-->
+        <attr name="barRadius" format="integer" />
+        <!--进度条背景色-->
+        <attr name="barBgColor" format="reference" />
+        <!--进度条颜色-->
+        <attr name="barProgressColor" format="reference" />
+        <!--渐变开始颜色-->
+        <attr name="barStartColor" format="reference" />
+        <!--渐变结束颜色-->
+        <attr name="barEndColor" format="reference" />
+        <!--是否渐变-->
+        <attr name="barIsGradient" format="boolean" />
+    </declare-styleable>
+
+    <style name="dialog" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+</resources>

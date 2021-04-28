@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.sph.sphtech"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("test.jks")
+            storePassword "testtest"
+            keyAlias "test"
+            keyPassword "testtest"
+        }
+    }
+
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+//    enableUnitTestBinaryResources=true
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    repositories {//dev  使用
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+
+    implementation rootProject.ext.supportLibs
+    implementation rootProject.ext.networkLibs
+    annotationProcessor rootProject.ext.annotationLibs
+    implementation rootProject.ext.multidexLibs
+    implementation rootProject.ext.kotlinLibs
+    implementation rootProject.ext.dblibs
+    implementation rootProject.ext.otherLibs
+
+    kapt rootProject.ext.kaptvLibs
+
+    api(name: 'MPChartLib-release', ext: 'aar')
+    testImplementation rootProject.ext.test
+    testImplementation rootProject.ext.androidTest
+    androidTestImplementation rootProject.ext.androidTest
+
+}
